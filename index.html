@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="blackjack.css">
 </head>
 <body>
@@ -15,10 +15,11 @@
     <div class="flex" id="cardResult"></div>
     <div class="flex" id="winResult"></div>
     <div class="flex">
-        <button onclick="hit()" id="hit" class="buttons">hit</button>
-        <button onclick="stand()" id="stand" class="buttons">stand</button>
+        <button onclick="hit()" id="hit" class="buttons" disabled>hit</button>
+        <button onclick="stand()" id="stand" class="buttons" disabled>stand</button>
     </div>
-<script src="blackjack1.js"></script>
+<script src="blackjack.js"></script>
+<script src="chips.js"></script>
 </body>
 
 </html>

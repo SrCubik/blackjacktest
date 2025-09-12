@@ -5,6 +5,41 @@ let dealerValues = [];
 let dealerImages = [];
 let hiddenCardHTML = "";
 
+let shouldButtonWork = true;
+
+const startButton = document.getElementById("start");
+const hitButton = document.getElementById("hit");
+const standButton = document.getElementById("stand");
+
+startButton.addEventListener("click", function () {
+    if (shouldButtonWork == true) {
+        hitButton.disabled = false;
+        standButton.disabled = false;
+    } else {
+        hitButton.disabled = true;
+        standButton.disabled = true;
+}});
+
+hitButton.addEventListener("click", function () {
+    if (shouldButtonWork == true) {
+        hitButton.disabled = false;
+        standButton.disabled = false;
+    } else {
+        hitButton.disabled = true;
+        standButton.disabled = true;
+}});
+standButton.addEventListener("click", function () {
+    if (shouldButtonWork == true) {
+        standButton.disabled = false;
+        hitButton.disabled = false;
+    } else {
+        standButton.disabled = true;
+        hitButton.disabled = true;
+}});
+
+
+
+
 function sum(arr){
     let total = 0;
     let aces = 0;
@@ -20,6 +55,9 @@ function sum(arr){
     return total;
 }
 function start(){
+    shouldButtonWork = true;
+    const winResult = document.getElementById("winResult")
+    winResult.textContent = "";
     const dealerImage = document.getElementById("dealerImage")
     const dealerResult = document.getElementById("dealerResult")
     const cardImage = document.getElementById("cardImage");
@@ -32,14 +70,14 @@ function start(){
 
     dealPlayer();
     const total = sum(values);
-    cardResult.textContent = "card: " + total;
+    cardResult.textContent = total;
     cardImage.innerHTML = images.join("");
 
     
     dealDealer();
     dealDealer(true);
     dealerImage.innerHTML = dealerImages.join("");
-    dealerResult.textContent = "card: " + dealerValues[0];
+    dealerResult.textContent = dealerValues[0];
     
 
 
@@ -141,10 +179,11 @@ function hit(){
         cardImage.innerHTML = images.join("");
 
     const total = sum(values);
-    cardResult.textContent = "card: " + total;
+    cardResult.textContent = total;
 
     if (total > 21) {
-        winResult.textContent = "you BUSTED";
+        result(true);
+        shouldButtonWork = false;
     }
 }
 function stand(){
@@ -153,20 +192,21 @@ revealDealerCard();
 while (sum(dealerValues) < 17) {
         dealDealer();
         dealerImage.innerHTML = dealerImages.join("");
-        dealerResult.textContent = "card: " + sum(dealerValues);
+        dealerResult.textContent = sum(dealerValues);
     }
      
     const dealerTotal = sum(dealerValues);
     const playerTotal = sum(values);
     if (dealerTotal > 21) {
-        winResult.textContent = "the dealer BUSTED";
+        resultDealer(false);
     } else if (dealerTotal > playerTotal) {
-        winResult.textContent = "you lose";
+        resultDealer(true);
     } else if (dealerTotal < playerTotal) {
-        winResult.textContent = "you win";
+        resultDealer(false);
     } else {
         winResult.textContent = "draw";
     }
+    shouldButtonWork = false;
 }
 function revealDealerCard(){
     const dealerImage = document.getElementById("dealerImage")
@@ -175,6 +215,24 @@ function revealDealerCard(){
     dealerImage.innerHTML = dealerImages.join("");
 
     const total = sum(dealerValues);
-    dealerResult.textContent = "card: " + total;
+    dealerResult.textContent = total;
 }
+function result(win) {
+    let winResult = document.getElementById("winResult")
 
+    if (win == true){
+        winResult.textContent = "you lost";
+    }else{
+        winResult.textContent = "you win";
+    }
+}
+function resultDealer(winDealer) {
+    
+    let winResult = document.getElementById("winResult")
+
+    if (winDealer == true){
+        winResult.textContent = "you lost";
+    }else{
+        winResult.textContent = "you win";
+    }
+}
