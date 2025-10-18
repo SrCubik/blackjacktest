@@ -10,13 +10,13 @@ img {
     justify-content: center;
     align-items: center;
     margin: auto;
-    padding: 30px;
+    padding: 10px;
 }
 .buttons{
     background-color: rgb(139, 139, 133);
     text-align: center;
-    padding: 20px;
-    font-size: 8em;
+    padding: 10px;
+    font-size: 1em;
     font-family: monospace;
     font-style: bold;
     border: none;
@@ -24,8 +24,8 @@ img {
     -webkit-user-select: none;
     -ms-user-select: none; 
     user-select: none;
-    height: 20vw;
-    width: 200vw;
+    height: 1vw;
+    width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,24 +41,23 @@ img {
     color:#D4AF37;
 }
 #dealerResult{
-    font-size: 10vw;
+    font-size: 3vw;
     font-family: monospace;
 }
 #dealerImage{
-    height: 10%;
-    width: 10%;
+    height: 160px;
+    width: 160px;
 }
-
 #cardImage{
-    height: 10%;
-    width: 10%;
+    height: 160px;
+    width: 160px;
 }
 #cardResult{
-    font-size: 10vw;
+    font-size: 3vw;
     font-family: monospace;
 }
 #winResult{
-    font-size: 10vw;
+    font-size: 3vw;
     font-family: monospace;
 }
 @media (max-width:600px) {
@@ -66,7 +65,16 @@ img {
        font-size: 4em;
     }
 }
-image{
-    height: 50px;
-    width: 50px;
+input[type="number"]{
+    font-size: 2em;
+    width: 115px;
+    padding: 5px;
+    border-radius: 25px;
+    border-width: 3px;
+    border-style: groove;
+    cursor: pointer;
+    border-color: #D4AF37;
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
 }

@@ -11,6 +11,12 @@ const startButton = document.getElementById("start");
 const hitButton = document.getElementById("hit");
 const standButton = document.getElementById("stand");
 
+let moneyInput = document.getElementById("money");
+const moneyAmount = document.getElementById("amountMoney");
+let balance = 0;
+
+
+
 startButton.addEventListener("click", function () {
     if (shouldButtonWork == true) {
         hitButton.disabled = false;
@@ -38,8 +44,6 @@ standButton.addEventListener("click", function () {
 }});
 
 
-
-
 function sum(arr){
     let total = 0;
     let aces = 0;
@@ -55,6 +59,7 @@ function sum(arr){
     return total;
 }
 function start(){
+    startButton.disabled = true;
     shouldButtonWork = true;
     const winResult = document.getElementById("winResult")
     winResult.textContent = "";
@@ -205,6 +210,7 @@ while (sum(dealerValues) < 17) {
         resultDealer(false);
     } else {
         winResult.textContent = "draw";
+        startButton.disabled = false;
     }
     shouldButtonWork = false;
 }
@@ -219,20 +225,42 @@ function revealDealerCard(){
 }
 function result(win) {
     let winResult = document.getElementById("winResult")
+    let moneyValue = moneyInput.value;
 
     if (win == true){
         winResult.textContent = "you lost";
+        moneyDown(moneyValue);
+        startButton.disabled = false;
     }else{
         winResult.textContent = "you win";
+        moneyUp(moneyValue);
+        startButton.disabled = false;
     }
 }
 function resultDealer(winDealer) {
     
     let winResult = document.getElementById("winResult")
-
+    let moneyValue = moneyInput.value;
     if (winDealer == true){
         winResult.textContent = "you lost";
+        moneyDown(moneyValue);
+        startButton.disabled = false;
     }else{
         winResult.textContent = "you win";
+        moneyUp(moneyValue);
+        startButton.disabled = false;
     }
 }
+
+function moneyUp(moneyValue1) {
+            balance += moneyValue1 * 2;
+            moneyAmount.textContent = balance;
+            return balance;
+}
+function moneyDown(moneyValue1) {
+            balance -= moneyValue1;
+            moneyAmount.textContent = balance;
+            return balance;
+}
+
+

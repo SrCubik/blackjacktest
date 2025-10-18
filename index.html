@@ -5,8 +5,10 @@
 <link rel="stylesheet" href="blackjack.css">
 </head>
 <body>
+    <div class="flex"><input type="number" id="money" value="1" min="1"></div>
     <div class="flex">
-        <button onclick="start()" id="start" class="buttons">start</button>
+        
+        <button onclick="start()" id="start" class="buttons">bet</button>
     </div>
     <div class="flex" id="dealerResult"></div>
     <div class="flex" id="dealerImage"></div>
@@ -18,9 +20,13 @@
         <button onclick="hit()" id="hit" class="buttons" disabled>hit</button>
         <button onclick="stand()" id="stand" class="buttons" disabled>stand</button>
     </div>
-    <image src="chips/chip10.png"></image>
+     <div class="flex"><div id="amountMoney"></div></div>
+     <button onclick="result(true)">Simulate Player Lose</button>
+<button onclick="result(false)">Simulate Player Win</button>
+
+<button onclick="resultDealer(true)">Simulate Dealer Win</button>
+<button onclick="resultDealer(false)">Simulate Dealer Lose</button>
 <script src="blackjack.js"></script>
-<script src="chips.js"></script>
 </body>
 
 </html>
