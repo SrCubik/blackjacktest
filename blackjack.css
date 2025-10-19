@@ -70,6 +70,12 @@ img {
        margin: auto;
     }
 }
+@media (max-width:700px) {
+    #cardImage, #dealerImage{
+        height: 100px;
+        width: 100px;
+    }
+}
 input[type="number"]{
     font-size: 2em;
     width: 115px;
