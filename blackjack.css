@@ -15,12 +15,12 @@ img {
 .buttons{
     background-color: #4E6A54;
     text-align: center;
-    padding: 10px;
-    font-size: 1em;
+    padding: 40px;
+    font-size: 5em;
     font-family: monospace;
     font-style: bold;
     border: none;
-    margin-top: 30px;
+    margin-top: 15px;
     -webkit-user-select: none;
     -ms-user-select: none; 
     user-select: none;
@@ -29,7 +29,8 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin-right: 50px;
+    margin-left: 50px;
 }
 .buttons:hover{
     background-color: #4E6A54;
@@ -64,8 +65,9 @@ img {
     font-family: monospace;
 }
 @media (max-width:600px) {
-    .buttons{
+    .buttons, #cardResult, #winResult, #dealerResult{
        font-size: 4em;
+       margin: auto;
     }
 }
 input[type="number"]{
