@@ -13,17 +13,40 @@ const standButton = document.getElementById("stand");
 
 let moneyInput = document.getElementById("money");
 const moneyAmount = document.getElementById("amountMoney");
-let balance = 0;
+let balance = 10;
+moneyAmount.textContent = balance + "$";
 
-
+moneyInput.addEventListener('input', function () {
+    let moneyValue = moneyInput.value;
+    if (balance < moneyValue){
+        moneyInput.value = balance; 
+    }
+})
+moneyInput.addEventListener('input', function () {
+    let moneyValue = moneyInput.value;
+    if (moneyValue < 0){
+        moneyInput.value = 1; 
+    }
+})
 
 startButton.addEventListener("click", function () {
+    let moneyValue = moneyInput.value;
+    if (balance < moneyValue){
+        moneyInput.value = balance; 
+    }
+    if (balance <= 0){
+        moneyAmount.textContent = "not enough money";
+        shouldButtonWork = false;
+    }
+    
     if (shouldButtonWork == true) {
         hitButton.disabled = false;
         standButton.disabled = false;
+        moneyInput.disabled = true;
     } else {
         hitButton.disabled = true;
         standButton.disabled = true;
+        moneyInput.disabled = false;
 }});
 
 hitButton.addEventListener("click", function () {
@@ -33,6 +56,7 @@ hitButton.addEventListener("click", function () {
     } else {
         hitButton.disabled = true;
         standButton.disabled = true;
+        moneyInput.disabled = false;
 }});
 standButton.addEventListener("click", function () {
     if (shouldButtonWork == true) {
@@ -41,6 +65,7 @@ standButton.addEventListener("click", function () {
     } else {
         standButton.disabled = true;
         hitButton.disabled = true;
+        moneyInput.disabled = false;
 }});
 
 
@@ -253,13 +278,13 @@ function resultDealer(winDealer) {
 }
 
 function moneyUp(moneyValue1) {
-            balance += moneyValue1 * 2;
-            moneyAmount.textContent = balance;
+            balance += moneyValue1 * 2 - moneyValue1;
+            moneyAmount.textContent = balance + "$";
             return balance;
 }
 function moneyDown(moneyValue1) {
             balance -= moneyValue1;
-            moneyAmount.textContent = balance;
+            moneyAmount.textContent = balance + "$";
             return balance;
 }
 

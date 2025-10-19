@@ -13,7 +13,7 @@ img {
     padding: 10px;
 }
 .buttons{
-    background-color: rgb(139, 139, 133);
+    background-color: #4E6A54;
     text-align: center;
     padding: 10px;
     font-size: 1em;
@@ -32,15 +32,16 @@ img {
     margin: auto;
 }
 .buttons:hover{
-    background-color: rgb(78, 78, 78);
+    background-color: #4E6A54;
     color:#D4AF37;
 }
 .buttons:active{
-    background-color: rgb(107, 107, 107);
+    background-color: #4E6A54;
     transform: scale(1.03);
     color:#D4AF37;
 }
 #dealerResult{
+    height: 30px;
     font-size: 3vw;
     font-family: monospace;
 }
@@ -53,10 +54,12 @@ img {
     width: 160px;
 }
 #cardResult{
+    height: 30px;
     font-size: 3vw;
     font-family: monospace;
 }
 #winResult{
+    height: 30px;
     font-size: 3vw;
     font-family: monospace;
 }
@@ -69,12 +72,18 @@ input[type="number"]{
     font-size: 2em;
     width: 115px;
     padding: 5px;
-    border-radius: 25px;
     border-width: 3px;
     border-style: groove;
     cursor: pointer;
-    border-color: #D4AF37;
+    font-family: monospace;
+    border-color: #4E6A54;
     -webkit-user-select: none;
     -ms-user-select: none; 
     user-select: none;
+    background-color: #4E6A54;
+}
+#amountMoney{
+    padding-top: 30px;
+    font-size: 2em;
+    font-family: monospace;
 }
