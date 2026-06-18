@@ -1,97 +1,192 @@
-body{
-   background-color: #4E6A54;
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-img {
-    height: 100%;
-    width: 100%;
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle at top, #14532d, #052e16 65%, #020617);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
 }
-.flex{
+
+/* General layout */
+.flex {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    padding: 10px;
+    gap: 14px;
+    margin: 12px 0;
 }
-.buttons{
-    background-color: #4E6A54;
+
+/* Money input */
+#money {
+    width: 160px;
+    padding: 14px;
+    font-size: 20px;
     text-align: center;
-    padding: 40px;
-    font-size: 5em;
-    font-family: monospace;
-    font-style: bold;
+
+    color: white;
+    background-color: #0f172a;
+
+    border: 2px solid #facc15;
+    border-radius: 14px;
+    outline: none;
+
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.35);
+}
+
+#money:focus {
+    border-color: #fde68a;
+    box-shadow: 0 0 22px rgba(250, 204, 21, 0.6);
+}
+
+/* Buttons */
+.buttons {
+    min-width: 110px;
+    padding: 14px 22px;
+
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #020617;
+    background: linear-gradient(135deg, #facc15, #f59e0b);
+
     border: none;
-    margin-top: 15px;
-    -webkit-user-select: none;
-    -ms-user-select: none; 
-    user-select: none;
-    height: 1vw;
-    width: 20vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 50px;
-    margin-left: 50px;
-}
-.buttons:hover{
-    background-color: #4E6A54;
-    color:#D4AF37;
-}
-.buttons:active{
-    background-color: #4E6A54;
-    transform: scale(1.03);
-    color:#D4AF37;
-}
-#dealerResult{
-    height: 30px;
-    font-size: 3vw;
-    font-family: monospace;
-}
-#dealerImage{
-    height: 160px;
-    width: 160px;
-}
-#cardImage{
-    height: 160px;
-    width: 160px;
-}
-#cardResult{
-    height: 30px;
-    font-size: 3vw;
-    font-family: monospace;
-}
-#winResult{
-    height: 30px;
-    font-size: 3vw;
-    font-family: monospace;
-}
-@media (max-width:600px) {
-    .buttons, #cardResult, #winResult, #dealerResult{
-       font-size: 4em;
-       margin: auto;
-    }
-}
-@media (max-width:700px) {
-    #cardImage, #dealerImage{
-        height: 100px;
-        width: 100px;
-    }
-}
-input[type="number"]{
-    font-size: 2em;
-    width: 115px;
-    padding: 5px;
-    border-width: 3px;
-    border-style: groove;
+    border-radius: 14px;
+
     cursor: pointer;
-    font-family: monospace;
-    border-color: #4E6A54;
-    -webkit-user-select: none;
-    -ms-user-select: none; 
-    user-select: none;
-    background-color: #4E6A54;
+
+    box-shadow: 0 6px 0 #92400e;
+    transition: 0.15s ease;
 }
-#amountMoney{
-    padding-top: 30px;
-    font-size: 2em;
-    font-family: monospace;
+
+.buttons:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #92400e;
+    filter: brightness(1.08);
+}
+
+.buttons:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #92400e;
+}
+
+.buttons:disabled {
+    background: #475569;
+    color: #94a3b8;
+    box-shadow: 0 5px 0 #1e293b;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+}
+
+/* Dealer and player text results */
+#dealerResult,
+#cardResult,
+#winResult,
+#amountMoney {
+    min-height: 35px;
+    padding: 10px 18px;
+
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+
+    background-color: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    border-radius: 14px;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Win result stands out more */
+#winResult {
+    font-size: 26px;
+    color: #facc15;
+    min-width: 260px;
+}
+
+/* Card areas */
+#dealerImage,
+#cardImage {
+    min-height: 130px;
+    min-width: 280px;
+
+    padding: 16px;
+
+    background-color: rgba(2, 6, 23, 0.45);
+    border: 2px dashed rgba(250, 204, 21, 0.35);
+    border-radius: 20px;
+
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Card images if you add img elements with JS */
+#dealerImage img,
+#cardImage img {
+    width: 85px;
+    margin: 0 6px;
+
+    border-radius: 8px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+
+    transition: transform 0.2s ease;
+}
+
+#dealerImage img:hover,
+#cardImage img:hover {
+    transform: translateY(-6px) rotate(2deg);
+}
+
+/* Money display */
+#amountMoney {
+    color: #86efac;
+    border-color: rgba(134, 239, 172, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    body {
+        padding: 15px;
+    }
+
+    .flex {
+        flex-wrap: wrap;
+    }
+
+    .buttons {
+        min-width: 95px;
+        font-size: 16px;
+        padding: 12px 18px;
+    }
+
+    #dealerImage,
+    #cardImage {
+        min-width: 240px;
+        min-height: 110px;
+    }
+
+    #dealerImage img,
+    #cardImage img {
+        width: 65px;
+    }
+
+    #dealerResult,
+    #cardResult,
+    #winResult,
+    #amountMoney {
+        font-size: 18px;
+    }
 }
